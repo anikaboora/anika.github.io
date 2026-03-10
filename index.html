@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anika Singh · consulting & analytics</title>
+  <!-- Font Awesome 6 (free) for clean icons & profile placeholder -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f5f9;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      color: #1e2b37;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px -10px rgba(0,20,40,0.15);
+      padding: 2.5rem 2.8rem;
+    }
+
+    /* header with profile pic placeholder */
+    .profile-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .profile-pic-placeholder {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #d9e6f2;
+      border: 3px solid #307eac;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #307eac;
+      font-size: 2.5rem;
+      box-shadow: 0 4px 10px rgba(0,60,100,0.1);
+    }
+
+    .name-title h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0f2b3b;
+    }
+
+    .name-title .sub {
+      font-size: 1.2rem;
+      color: #3f5f75;
+      margin-top: 0.3rem;
+    }
+
+    /* tab navigation */
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 2px solid #dde5ed;
+      padding-bottom: 0;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 0.9rem 2.2rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #4e6b7e;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: inherit;
+      border-radius: 40px 40px 0 0;
+      margin-bottom: -2px;
+    }
+
+    .tab-btn.active {
+      background: #ffffff;
+      color: #0a3142;
+      font-weight: 600;
+      border: 2px solid #dde5ed;
+      border-bottom-color: white;
+    }
+
+    .tab-btn:hover {
+      background: #f0f5fa;
+      color: #1d4b64;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active-panel {
+      display: block;
+    }
+
+    /* cards */
+    .exp-item, .edu-item {
+      background: #ffffff;
+      border: 1px solid #e2eaf1;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+      transition: 0.15s;
+    }
+
+    .exp-item:hover {
+      border-color: #bcd3e3;
+      box-shadow: 0 8px 20px rgba(0,60,90,0.08);
+    }
+
+    /* header with image logo */
+    .exp-header, .edu-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      background: white;
+      border-radius: 8px;
+    }
+
+    .institution {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #0f2f41;
+    }
+
+    .role-line {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #2a5b7a;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* role tags removed – only clean titles */
+
+    .date-location {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.2rem;
+      font-size: 0.95rem;
+      color: #5b768b;
+      border-left: 3px solid #b6d2e6;
+      padding-left: 1.2rem;
+      margin: 0.7rem 0 1.2rem 0;
+    }
+
+    .date i, .location i {
+      margin-right: 6px;
+      color: #3f7b9e;
+      width: 1.2rem;
+    }
+
+    .description {
+      background: #f8fbfe;
+      border-radius: 16px;
+      padding: 1.3rem 1.8rem;
+      margin: 1rem 0 1.2rem 0;
+      font-size: 1rem;
+      color: #1b3a4b;
+      border: 1px solid #e2ecf5;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 0.9rem;
+      margin-top: 0.8rem;
+    }
+
+    .skill {
+      background: #eef4f9;
+      border-radius: 40px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1b5670;
+      border: 1px solid #cbdae7;
+    }
+
+    /* about panel */
+    .about-card {
+      background: #f8fbfe;
+      border-radius: 24px;
+      padding: 2.4rem;
+      border: 1px solid #d6e3ef;
+    }
+
+    .about-card p {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1.8rem;
+      color: #103f57;
+      border-left: 6px solid #307eac;
+      padding-left: 1.8rem;
+    }
+
+    .about-highlight {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem 2.4rem;
+      font-size: 1.25rem;
+      color: #154353;
+      border: 1px solid #cde1f0;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .about-grid {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      background: #e1eefb;
+      border-radius: 18px;
+      padding: 1.5rem 2rem;
+    }
+
+    .about-grid i {
+      font-size: 2.5rem;
+      color: #307eac;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      text-align: center;
+      color: #6f8da0;
+      border-top: 1px solid #d7e2ec;
+      padding-top: 1.5rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Profile picture placeholder + name row -->
+  <div class="profile-row">
+    <div class="profile-pic-placeholder">
+      <i class="fas fa-user"></i>
+    </div>
+    <div class="name-title">
+      <h1>Anika Singh</h1>
+      <div class="sub">consulting · data analytics · strategy</div>
+    </div>
+  </div>
+
+  <!-- tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" id="tab1-btn"><i class="far fa-chart-bar" style="margin-right: 8px;"></i>Experience</button>
+    <button class="tab-btn" id="tab2-btn"><i class="far fa-building"></i> Education</button>
+    <button class="tab-btn" id="tab3-btn"><i class="far fa-user"></i> About</button>
+  </div>
+
+  <!-- EXPERIENCE PANEL (no extra tags) -->
+  <div id="panel1" class="tab-panel active-panel">
+
+    <!-- Princeton -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <i class="fas fa-shield-alt" style="font-size: 3rem; color: #f46f1b;"></i>
+        <div>
+          <div class="institution">Princeton University</div>
+          <div class="role-line">Research Analyst</div>
+        </div>
+      </div>
+      <div class="date-location">
+        <span class="date"><i class="far fa-calendar-alt"></i>Jun 2025 – Sep 2025 · 4 mos</span>
+      </div>
+      <div class="description">
+        Analyzed reporting processes for research computing metrics and collaborated with team leads to enhance data retrieval. Translated complex findings into actionable recommendations, with a focus on improving efficiency through workflow adjustments and analytics automation. Developed dashboards to visualize key performance indicators for stakeholders.
+      </div>
+      <div class="skill-list">
+        <span class="skill">Data Analysis</span>
+        <span class="skill">Requirements Gathering</span>
+        <span class="skill">Dashboard Design</span>
+        <span class="skill">Process Improvement</span>
+        <span class="skill">Stakeholder Communication</span>
+      </div>
+    </div>
+
+    <!-- Caltech / LIGO -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <i class="fas fa-telescope" style="font-size: 3rem; color: #bf5700;"></i>
+        <div>
+          <div class="institution">Caltech · LIGO</div>
+          <div class="role-line">Data Analytics Intern</div>
+        </div>
+      </div>
+      <div class="date-location">
+        <span class="date"><i class="far fa-calendar-alt"></i>Sep 2023 – Jun 2024 · 10 mos</span>
+        <span class="location"><i class="fas fa-map-pin"></i>Pasadena, CA</span>
+      </div>
+      <div class="description">
+        Worked on data visualization and database management for gravitational wave research. Built interactive dashboards using Python and Grafana, enabling scientists to explore complex datasets. Translated technical data into clear visual narratives, and collaborated with researchers to improve data accessibility. This experience sharpened my ability to communicate data-driven insights to diverse audiences.
+      </div>
+      <div class="skill-list">
+        <span class="skill">Python</span>
+        <span class="skill">Data Visualization</span>
+        <span class="skill">Grafana</span>
+        <span class="skill">InfluxDB</span>
+        <span class="skill">Dashboard Development</span>
+        <span class="skill">Cross-functional Collaboration</span>
+      </div>
+    </div>
+
+    <!-- UC Riverside -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <i class="fas fa-dna" style="font-size: 3rem; color: #2d6a4f;"></i>
+        <div>
+          <div class="institution">University of California, Riverside</div>
+          <div class="role-line">Undergraduate Researcher</div>
+        </div>
+      </div>
+      <div class="date-location">
+        <span class="date"><i class="far fa-calendar-alt"></i>Jun 2023 – Aug 2023 · 3 mos</span>
+        <span class="location"><i class="fas fa-map-pin"></i>Riverside, CA</span>
+      </div>
+      <div class="description">
+        Conducted genomic data mining research on Type 1 Diabetes using sc-RNAseq data. Implemented normalization, dimensionality reduction, and clustering pipelines in R. Presented findings to faculty and peers, translating complex statistical results into clear insights. This project strengthened my analytical toolkit and passion for using data to solve real-world problems.
+      </div>
+      <div class="skill-list">
+        <span class="skill">R Programming</span>
+        <span class="skill">Data Mining</span>
+        <span class="skill">Statistical Analysis</span>
+        <span class="skill">sc-RNAseq</span>
+        <span class="skill">Presentation Skills</span>
+      </div>
+    </div>
+
+    <!-- She.Codes -->
+    <div class="exp-item">
+      <div class="exp-header">
+        <i class="fas fa-laptop-code" style="font-size: 3rem; color: #aa4dc7;"></i>
+        <div>
+          <div class="institution">She.Codes</div>
+          <div class="role-line">Board Member</div>
+        </div>
+      </div>
+      <div class="date-location">
+        <span class="date"><i class="far fa-calendar-alt"></i>Aug 2022 – May 2023 · 10 mos</span>
+        <span class="location"><i class="fas fa-map-pin"></i>Pasadena City College</span>
+      </div>
+      <div class="description">
+        Organized the NASA Space Apps Challenge hackathon and led professional development workshops. Collaborated with industry speakers from Snap Inc. and Siemens. Focused on creating inclusive environments to bridge the gender gap in STEM. Developed project management and event coordination skills while fostering community partnerships.
+      </div>
+      <div class="skill-list">
+        <span class="skill">Event Planning</span>
+        <span class="skill">Hackathon Organization</span>
+        <span class="skill">STEM Outreach</span>
+        <span class="skill">Community Engagement</span>
+        <span class="skill">Workshop Facilitation</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION PANEL (with June 2026, Arcadia HS, CHSPE) -->
+  <div id="panel2" class="tab-panel">
+    <!-- UCLA -->
+    <div class="edu-item">
+      <div class="exp-header">
+        <i class="fas fa-graduation-cap" style="font-size: 3rem; color: #2d68c4;"></i>
+        <div>
+          <div class="institution">University of California, Los Angeles (UCLA)</div>
+          <div class="role-line">B.S. in Statistics and Data Science</div>
+        </div>
+      </div>
+      <div class="date-location">
+        <span class="date"><i class="far fa-calendar-alt"></i>Expected June 2026</span>
+        <span class="location"><i class="fas fa-map-pin"></i>Los Angeles, CA</span>
+      </div>
+      <div class="description">
+        Coursework includes statistical modeling, machine learning, data visualization, experimental design, and consulting projects. Engaged in case competitions and collaborative analytics projects with real-world datasets.
+      </div>
+    </div>
+
+    <!-- Arcadia High School + CHSPE -->
+    <div class="edu-item">
+      <div class="exp-header">
+        <i class="fas fa-school" style="font-size: 3rem; color: #4a6fa5;"></i>
+        <div>
+          <div class="institution">Arcadia High School</div>
+          <div class="role-line">High School Diploma (CHSPE)</div>
+        </div>
+      </div>
+      <div class="date-location">
+        <span class="date"><i class="far fa-calendar-alt"></i>Graduated at age 15</span>
+        <span class="location"><i class="fas fa-map-pin"></i>Arcadia, CA</span>
+      </div>
+      <div class="description">
+        Graduated early by passing the California High School Proficiency Exam (CHSPE). Completed advanced coursework in mathematics and computer science while accelerating my path to university.
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT PANEL – restored to original "high tech" wording but without weird phrases, now with consulting interest -->
+  <div id="panel3" class="tab-panel">
+    <div class="about-card">
+      <p><i class="fas fa-chart-pie" style="margin-right: 12px;"></i>  about Anika</p>
+      <div class="about-highlight">
+        I graduated high school at the age of 15, conducted genomic data mining as an undergraduate researcher at UCR, and interned at Caltech's LIGO. As an aspiring data scientist with a strong interest in consulting and data analytics, I love picking up new skills and contributing to something bigger than myself.
+      </div>
+      <div class="about-grid">
+        <i class="fas fa-lightbulb"></i>
+        <span style="font-weight: 400; font-size: 1.2rem;">Whether it's analyzing scientific data or optimizing business processes, I'm driven to collaborate, translate insights, and deliver impact.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- simple footer -->
+  <div class="footer-note">
+    <i class="far fa-smile"></i>  Anika Singh · aspiring consultant
+  </div>
+</div>
+
+<!-- TAB SCRIPT -->
+<script>
+  (function() {
+    const btn1 = document.getElementById('tab1-btn');
+    const btn2 = document.getElementById('tab2-btn');
+    const btn3 = document.getElementById('tab3-btn');
+    const panel1 = document.getElementById('panel1');
+    const panel2 = document.getElementById('panel2');
+    const panel3 = document.getElementById('panel3');
+
+    function deactivateAll() {
+      btn1.classList.remove('active');
+      btn2.classList.remove('active');
+      btn3.classList.remove('active');
+      panel1.classList.remove('active-panel');
+      panel2.classList.remove('active-panel');
+      panel3.classList.remove('active-panel');
+    }
+
+    btn1.addEventListener('click', () => {
+      deactivateAll();
+      btn1.classList.add('active');
+      panel1.classList.add('active-panel');
+    });
+    btn2.addEventListener('click', () => {
+      deactivateAll();
+      btn2.classList.add('active');
+      panel2.classList.add('active-panel');
+    });
+    btn3.addEventListener('click', () => {
+      deactivateAll();
+      btn3.classList.add('active');
+      panel3.classList.add('active-panel');
+    });
+  })();
+</script>
+</body>
+</html>
