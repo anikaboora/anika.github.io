@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anika Singh · consulting & analytics</title>
-  <!-- Font Awesome 6 (free) for clean icons & profile placeholder -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -30,7 +29,7 @@
       padding: 2.5rem 2.8rem;
     }
 
-    /* header with profile pic placeholder */
+    /* Profile row with actual image */
     .profile-row {
       display: flex;
       align-items: center;
@@ -39,17 +38,12 @@
       flex-wrap: wrap;
     }
 
-    .profile-pic-placeholder {
+    .profile-pic {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background: #d9e6f2;
+      object-fit: cover;
       border: 3px solid #307eac;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #307eac;
-      font-size: 2.5rem;
       box-shadow: 0 4px 10px rgba(0,60,100,0.1);
     }
 
@@ -58,15 +52,21 @@
       font-weight: 600;
       letter-spacing: -0.02em;
       color: #0f2b3b;
+      margin-bottom: 0.2rem;
     }
 
     .name-title .sub {
       font-size: 1.2rem;
       color: #3f5f75;
-      margin-top: 0.3rem;
     }
 
-    /* tab navigation */
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      background: transparent;
+    }
+
     .tabs {
       display: flex;
       gap: 0.5rem;
@@ -110,8 +110,7 @@
       display: block;
     }
 
-    /* cards */
-    .exp-item, .edu-item {
+    .exp-item, .edu-item, .project-item {
       background: #ffffff;
       border: 1px solid #e2eaf1;
       border-radius: 20px;
@@ -121,26 +120,17 @@
       transition: 0.15s;
     }
 
-    .exp-item:hover {
+    .exp-item:hover, .edu-item:hover, .project-item:hover {
       border-color: #bcd3e3;
       box-shadow: 0 8px 20px rgba(0,60,90,0.08);
     }
 
-    /* header with image logo */
-    .exp-header, .edu-header {
+    .exp-header, .edu-header, .project-header {
       display: flex;
       align-items: center;
       gap: 1.5rem;
       margin-bottom: 1rem;
       flex-wrap: wrap;
-    }
-
-    .logo-img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-      background: white;
-      border-radius: 8px;
     }
 
     .institution {
@@ -153,13 +143,21 @@
       font-size: 1.2rem;
       font-weight: 500;
       color: #2a5b7a;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1rem;
     }
 
-    /* role tags removed – only clean titles */
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #0f2f41;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-subtitle {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #2a5b7a;
+      margin-bottom: 0.5rem;
+    }
 
     .date-location {
       display: flex;
@@ -255,15 +253,25 @@
       padding-top: 1.5rem;
       font-size: 0.9rem;
     }
+
+    /* Featured project badge */
+    .featured-badge {
+      display: inline-block;
+      background: #307eac;
+      color: white;
+      font-size: 0.8rem;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      margin-left: 1rem;
+      vertical-align: middle;
+    }
   </style>
 </head>
 <body>
 <div class="container">
-  <!-- Profile picture placeholder + name row -->
+  <!-- Profile picture - now using your actual image -->
   <div class="profile-row">
-    <div class="profile-pic-placeholder">
-      <i class="fas fa-user"></i>
-    </div>
+    <img src="anika.JPG" alt="Anika Singh" class="profile-pic">
     <div class="name-title">
       <h1>Anika Singh</h1>
       <div class="sub">consulting · data analytics · strategy</div>
@@ -277,13 +285,13 @@
     <button class="tab-btn" id="tab3-btn"><i class="far fa-user"></i> About</button>
   </div>
 
-  <!-- EXPERIENCE PANEL (no extra tags) -->
+  <!-- EXPERIENCE PANEL -->
   <div id="panel1" class="tab-panel active-panel">
 
-    <!-- Princeton -->
+    <!-- Princeton with your princeton.png -->
     <div class="exp-item">
       <div class="exp-header">
-        <i class="fas fa-shield-alt" style="font-size: 3rem; color: #f46f1b;"></i>
+        <img src="princeton.png" alt="Princeton University" class="logo-img">
         <div>
           <div class="institution">Princeton University</div>
           <div class="role-line">Research Analyst</div>
@@ -304,7 +312,7 @@
       </div>
     </div>
 
-    <!-- Caltech / LIGO -->
+    <!-- Caltech / LIGO (keep the telescope icon since you don't have Caltech logo) -->
     <div class="exp-item">
       <div class="exp-header">
         <i class="fas fa-telescope" style="font-size: 3rem; color: #bf5700;"></i>
@@ -318,7 +326,7 @@
         <span class="location"><i class="fas fa-map-pin"></i>Pasadena, CA</span>
       </div>
       <div class="description">
-        Worked on data visualization and database management for gravitational wave research. Built interactive dashboards using Python and Grafana, enabling scientists to explore complex datasets. Translated technical data into clear visual narratives, and collaborated with researchers to improve data accessibility. This experience sharpened my ability to communicate data-driven insights to diverse audiences.
+        Worked on data visualization and database management for gravitational wave research. Built interactive dashboards using Python and Grafana, enabling scientists to explore complex datasets. Translated technical data into clear visual narratives, and collaborated with researchers to improve data accessibility.
       </div>
       <div class="skill-list">
         <span class="skill">Python</span>
@@ -330,10 +338,10 @@
       </div>
     </div>
 
-    <!-- UC Riverside -->
+    <!-- UC Riverside with your ucr.png -->
     <div class="exp-item">
       <div class="exp-header">
-        <i class="fas fa-dna" style="font-size: 3rem; color: #2d6a4f;"></i>
+        <img src="ucr.png" alt="UC Riverside" class="logo-img">
         <div>
           <div class="institution">University of California, Riverside</div>
           <div class="role-line">Undergraduate Researcher</div>
@@ -344,7 +352,7 @@
         <span class="location"><i class="fas fa-map-pin"></i>Riverside, CA</span>
       </div>
       <div class="description">
-        Conducted genomic data mining research on Type 1 Diabetes using sc-RNAseq data. Implemented normalization, dimensionality reduction, and clustering pipelines in R. Presented findings to faculty and peers, translating complex statistical results into clear insights. This project strengthened my analytical toolkit and passion for using data to solve real-world problems.
+        Conducted genomic data mining research on Type 1 Diabetes using sc-RNAseq data. Implemented normalization, dimensionality reduction, and clustering pipelines in R. Presented findings to faculty and peers, translating complex statistical results into clear insights.
       </div>
       <div class="skill-list">
         <span class="skill">R Programming</span>
@@ -355,10 +363,10 @@
       </div>
     </div>
 
-    <!-- She.Codes -->
+    <!-- She.Codes with your pcc.png -->
     <div class="exp-item">
       <div class="exp-header">
-        <i class="fas fa-laptop-code" style="font-size: 3rem; color: #aa4dc7;"></i>
+        <img src="pcc.png" alt="She.Codes" class="logo-img">
         <div>
           <div class="institution">She.Codes</div>
           <div class="role-line">Board Member</div>
@@ -369,7 +377,7 @@
         <span class="location"><i class="fas fa-map-pin"></i>Pasadena City College</span>
       </div>
       <div class="description">
-        Organized the NASA Space Apps Challenge hackathon and led professional development workshops. Collaborated with industry speakers from Snap Inc. and Siemens. Focused on creating inclusive environments to bridge the gender gap in STEM. Developed project management and event coordination skills while fostering community partnerships.
+        Organized the NASA Space Apps Challenge hackathon and led professional development workshops. Collaborated with industry speakers from Snap Inc. and Siemens. Focused on creating inclusive environments to bridge the gender gap in STEM.
       </div>
       <div class="skill-list">
         <span class="skill">Event Planning</span>
@@ -381,12 +389,12 @@
     </div>
   </div>
 
-  <!-- EDUCATION PANEL (with June 2026, Arcadia HS, CHSPE) -->
+  <!-- EDUCATION PANEL (with new Digital Humanities project) -->
   <div id="panel2" class="tab-panel">
-    <!-- UCLA -->
+    <!-- UCLA with your ucla.png -->
     <div class="edu-item">
       <div class="exp-header">
-        <i class="fas fa-graduation-cap" style="font-size: 3rem; color: #2d68c4;"></i>
+        <img src="ucla.png" alt="UCLA" class="logo-img">
         <div>
           <div class="institution">University of California, Los Angeles (UCLA)</div>
           <div class="role-line">B.S. in Statistics and Data Science</div>
@@ -398,6 +406,33 @@
       </div>
       <div class="description">
         Coursework includes statistical modeling, machine learning, data visualization, experimental design, and consulting projects. Engaged in case competitions and collaborative analytics projects with real-world datasets.
+      </div>
+    </div>
+
+    <!-- NEW: Digital Humanities 101 Project -->
+    <div class="project-item">
+      <div class="project-header">
+        <img src="ucla.png" alt="UCLA" class="logo-img">
+        <div>
+          <div class="project-title">Digital Humanities 101: Global Gender Gap Analysis <span class="featured-badge">featured project</span></div>
+          <div class="project-subtitle">Project Manager & Data Analyst · UCLA</div>
+        </div>
+      </div>
+      <div class="date-location">
+        <span class="date"><i class="far fa-calendar-alt"></i>September 2025 – December 2025</span>
+      </div>
+      <div class="description">
+        <p>Spearheaded a data analysis project to identify key predictors of female legislative representation, investigating political and economic systems; this purpose-driven work aligns with social challenges and equity goals.</p>
+        <p style="margin-top: 0.8rem;">Managed a cross-functional team in building a public GitHub Pages site, preparing and submitting statistical findings and visualizations with high-quality formatting, translating data into an accessible narrative.</p>
+      </div>
+      <div class="skill-list">
+        <span class="skill">Project Management</span>
+        <span class="skill">Data Analysis</span>
+        <span class="skill">Statistical Modeling</span>
+        <span class="skill">GitHub Pages</span>
+        <span class="skill">Data Visualization</span>
+        <span class="skill">Team Leadership</span>
+        <span class="skill">Social Impact</span>
       </div>
     </div>
 
@@ -420,7 +455,7 @@
     </div>
   </div>
 
-  <!-- ABOUT PANEL – restored to original "high tech" wording but without weird phrases, now with consulting interest -->
+  <!-- ABOUT PANEL -->
   <div id="panel3" class="tab-panel">
     <div class="about-card">
       <p><i class="fas fa-chart-pie" style="margin-right: 12px;"></i>  about Anika</p>
@@ -434,7 +469,7 @@
     </div>
   </div>
 
-  <!-- simple footer -->
+  <!-- footer -->
   <div class="footer-note">
     <i class="far fa-smile"></i>  Anika Singh · aspiring consultant
   </div>
